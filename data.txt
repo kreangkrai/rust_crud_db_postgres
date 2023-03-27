@@ -1,0 +1,49 @@
+table hr
+CREATE TABLE IF NOT EXISTS public.hr
+(
+    id serial NOT NULL,
+    emp_id text COLLATE pg_catalog."default" NOT NULL,
+    dep_id text COLLATE pg_catalog."default" NOT NULL,
+    salary real,
+    CONSTRAINT hr_pkey PRIMARY KEY (id),
+	 CONSTRAINT emp_fkey FOREIGN KEY (emp_id) REFERENCES employee(emp_id),
+	 CONSTRAINT dep_fkey FOREIGN KEY (dep_id) REFERENCES department(dep_id)
+)
+
+table employee
+CREATE TABLE IF NOT EXISTS public.employee
+(
+    emp_id text COLLATE pg_catalog."default" NOT NULL,
+    emp_name text COLLATE pg_catalog."default",
+    CONSTRAINT employee_pkey1 PRIMARY KEY (emp_id)
+)
+
+table department
+CREATE TABLE IF NOT EXISTS public.department
+(
+    dep_id text COLLATE pg_catalog."default" NOT NULL,
+    dep_name text COLLATE pg_catalog."default",
+    CONSTRAINT department_pkey PRIMARY KEY (dep_id)
+)
+
+//Structure
+src
+  ├──bin
+     ├──main.rs
+  ├──databases
+     ├──db.rs
+     ├──mod.rs
+  ├──errors
+     ├──error.rs
+     ├──mod.rs
+  ├──handlers
+     ├──hr.rs
+     ├──mod.rs
+  ├──models
+     ├──hr.rs
+     ├──mod.rs
+  ├──repository
+     ├──hr.rs 
+     ├──mod.rs
+  ├──lib.rs
+Cargo.toml
